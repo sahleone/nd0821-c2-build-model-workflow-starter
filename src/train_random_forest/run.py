@@ -99,9 +99,7 @@ def go(args):
     # HINT: use mlflow.sklearn.save_model
     # YOUR CODE HERE
     ######################################
-    mlflow.sklearn.save_model(
-            sk_pipe, "random_forest_dir"
-        )
+    mlflow.sklearn.save_model(sk_pipe, "random_forest_dir")
     ######################################
     # Upload the model we just exported to W&B
     # HINT: use wandb.Artifact to create an artifact. Use args.output_artifact as artifact name, "model_export" as
@@ -117,6 +115,7 @@ def go(args):
     artifact.add_dir("random_forest_dir")
 
     run.log_artifact(artifact)
+    artifact.wait()
     ######################################
 
     # Plot feature importance

@@ -50,6 +50,7 @@ def go(args):
     logger.info("logging artifact")
 
     run.log_artifact(artifact)
+    artifact.wait()
 
 if __name__ == "__main__":
 
